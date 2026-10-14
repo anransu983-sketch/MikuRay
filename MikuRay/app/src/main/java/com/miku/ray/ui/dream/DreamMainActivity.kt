@@ -21,6 +21,7 @@ import com.miku.ray.extension.snackbarSuccess
 import com.miku.ray.handler.AngConfigManager
 import com.miku.ray.handler.MmkvManager
 import com.miku.ray.handler.SettingsManager
+import com.miku.ray.handler.SubscriptionUpdater
 import com.miku.ray.ui.base.HelperBaseActivity
 import com.miku.ray.ui.bottomsheet.AddConfigBottomSheet
 import com.miku.ray.ui.main.MainViewModel
@@ -75,6 +76,10 @@ class DreamMainActivity : HelperBaseActivity(),
 
         mainViewModel.startListenBroadcast()
         mainViewModel.initAssets(assets)
+
+        mainViewModel.reloadServerList()
+        SubscriptionUpdater.sync()
+        checkAndRequestPermission(PermissionType.POST_NOTIFICATIONS) {}
     }
 
     private fun setupTabs() {
