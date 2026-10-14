@@ -1131,10 +1131,10 @@ you need."</string>
     <string name="dream_set_app_sub">主题、语言与行为</string>
     <string name="dream_set_network">网络</string>
     <string name="dream_set_network_sub">代理模式、DNS 与访问控制</string>
-    <string name="dream_set_override">覆写</string>
-    <string name="dream_set_override_sub">YAML、JS 与规则覆写</string>
-    <string name="dream_set_meta">Meta 功能</string>
-    <string name="dream_set_meta_sub">连接、日志、规则与统计</string>
+    <string name="dream_set_override">高级</string>
+    <string name="dream_set_override_sub">代理模式、测速与高级选项</string>
+    <string name="dream_set_meta">核心</string>
+    <string name="dream_set_meta_sub">Xray 核心引擎配置</string>
     <string name="dream_set_routing">路由设置</string>
     <string name="dream_set_routing_sub">路由规则与分流</string>
     <string name="dream_set_logcat">日志</string>
