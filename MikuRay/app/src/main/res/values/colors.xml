@@ -798,4 +798,6 @@
     <color name="dream_orb_edge">#8E9AA8</color>
     <color name="dream_orb_mid">#B9C2CF</color>
     <color name="dream_orb_core">#E8ECF2</color>
+    <color name="dream_sidebar_start">#3A3A3C</color>
+    <color name="dream_sidebar_end">#1C1C1E</color>
 </resources>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 梦盒风格首页：深色通顶侧栏 + 右侧大圆角卡片 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -6,42 +7,46 @@
     android:background="@color/dream_bg"
     android:orientation="horizontal">
 
-    <!-- 左侧窄边栏 -->
+    <!-- 左侧深色边栏 -->
     <LinearLayout
-        android:layout_width="76dp"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/dream_sidebar_bg"
         android:gravity="center_horizontal"
+        android:minWidth="100dp"
         android:orientation="vertical"
-        android:paddingTop="36dp">
+        android:paddingTop="24dp"
+        android:paddingBottom="24dp">
 
         <TextView
             android:id="@+id/dream_home_date_mm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/dream_text_primary"
-            android:textSize="32sp"
+            android:textColor="#FFFFFF"
+            android:textSize="43sp"
             android:textStyle="bold" />
 
         <View
             android:layout_width="22dp"
             android:layout_height="2dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="#40000000" />
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#4DFFFFFF" />
 
         <TextView
             android:id="@+id/dream_home_date_dd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/dream_text_primary"
-            android:textSize="32sp"
+            android:textColor="#FFFFFF"
+            android:textSize="43sp"
             android:textStyle="bold" />
 
         <FrameLayout
             android:layout_width="36dp"
             android:layout_height="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/dream_battery_track">
+            android:layout_marginTop="14dp"
+            android:background="@drawable/dream_battery_track_dark">
 
             <View
                 android:id="@+id/dream_home_battery_fill"
@@ -56,15 +61,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:textColor="@color/dream_text_secondary"
+            android:textColor="#FFFFFF"
             android:textSize="12sp" />
 
         <View
             android:layout_width="22dp"
             android:layout_height="2dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:background="#40000000" />
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="6dp"
+            android:background="#4DFFFFFF" />
 
         <ImageButton
             android:id="@+id/dream_home_shortcut_proxy"
@@ -73,7 +78,14 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/dream_tab_proxy"
             android:src="@drawable/rmx_arrows_arrow_up_down_line"
-            app:tint="@color/dream_text_primary" />
+            app:tint="#FFFFFF" />
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="#33FFFFFF" />
 
         <ImageButton
             android:id="@+id/dream_home_shortcut_config"
@@ -82,7 +94,14 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/dream_tab_config"
             android:src="@drawable/rmx_system_apps_line"
-            app:tint="@color/dream_text_primary" />
+            app:tint="#FFFFFF" />
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="#33FFFFFF" />
 
         <ImageButton
             android:id="@+id/dream_home_shortcut_settings"
@@ -91,184 +110,238 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/dream_tab_settings"
             android:src="@drawable/rmx_system_settings_3_line"
-            app:tint="@color/dream_text_primary" />
+            app:tint="#FFFFFF" />
+
+        <View
+            android:layout_width="16dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="#33FFFFFF" />
+
+        <ImageButton
+            android:id="@+id/dream_home_shortcut_theme"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/dream_tab_settings"
+            android:src="@drawable/rmx_design_palette_line"
+            app:tint="#FFFFFF" />
     </LinearLayout>
 
-    <!-- 右侧内容 -->
+    <!-- 右侧大圆角卡片 -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:gravity="center_horizontal"
+        android:layout_weight="3"
         android:orientation="vertical"
-        android:paddingLeft="8dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="24dp">
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.6" />
-
-        <ImageView
-            android:id="@+id/dream_home_orb"
-            android:layout_width="210dp"
-            android:layout_height="210dp"
-            android:contentDescription="@null"
-            android:src="@drawable/dream_orb" />
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:paddingRight="12dp"
+        android:paddingLeft="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:background="@drawable/dream_card_big"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp">
 
+            <!-- 光球区：占卡片约 55% 高度 -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/dream_home_orb"
+                    android:layout_width="220dp"
+                    android:layout_height="220dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/dream_orb" />
+            </FrameLayout>
+
+            <!-- UP / DOWN -->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="UP"
-                    android:textColor="#9E6E8380"
-                    android:textSize="11sp"
-                    android:textStyle="bold" />
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal">
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/dream_home_up_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="--"
-                        android:textColor="@color/dream_text_primary"
-                        android:textSize="30sp"
+                        android:text="UP"
+                        android:textColor="#9E6E8380"
+                        android:textSize="11sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/dream_home_up_unit"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginBottom="4dp"
-                        android:textColor="@color/dream_text_secondary"
-                        android:textSize="12sp" />
+                        android:gravity="bottom"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/dream_home_up_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textColor="@color/dream_text_primary"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/dream_home_up_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:textColor="@color/dream_text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DOWN"
+                        android:textColor="#9E6E8380"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/dream_home_down_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textColor="@color/dream_text_primary"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/dream_home_down_unit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:textColor="@color/dream_text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
 
+            <!-- 节点行 -->
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="end"
-                android:orientation="vertical">
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
 
                 <TextView
+                    android:id="@+id/dream_home_flag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="DOWN"
-                    android:textColor="#9E6E8380"
-                    android:textSize="11sp"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/dream_home_node_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/dream_no_server_selected"
+                    android:textColor="@color/dream_text_primary"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/dream_home_delay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dream_text_secondary"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="bottom"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/dream_home_down_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="--"
-                        android:textColor="@color/dream_text_primary"
-                        android:textSize="30sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/dream_home_down_unit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="4dp"
-                        android:layout_marginBottom="4dp"
-                        android:textColor="@color/dream_text_secondary"
-                        android:textSize="12sp" />
-                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            <!-- 问候区 -->
+            <TextView
+                android:id="@+id/dream_home_greeting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="#8E6E8380"
+                android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/dream_home_flag"
-                android:layout_width="wrap_content"
+                android:id="@+id/dream_home_subtitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/dream_home_node_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="1"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="@string/dream_no_server_selected"
+                android:layout_marginTop="2dp"
+                android:text="@string/dream_home_subtitle"
                 android:textColor="@color/dream_text_primary"
-                android:textSize="16sp" />
+                android:textSize="23sp" />
 
-            <TextView
-                android:id="@+id/dream_home_delay"
-                android:layout_width="wrap_content"
+            <!-- 底部操作条 -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/dream_text_secondary"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/dream_home_refresh_btn"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="@drawable/dream_circle_outline"
+                    android:contentDescription="@null"
+                    android:padding="15dp"
+                    android:src="@drawable/rmx_system_refresh_line"
+                    app:tint="@color/dream_teal" />
+
+                <Space
+                    android:layout_width="12dp"
+                    android:layout_height="match_parent" />
+
+                <Button
+                    android:id="@+id/dream_home_connect_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/dream_pill_teal"
+                    android:text="@string/dream_connect"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/dream_home_greeting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:textColor="#8E6E8380"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/dream_home_subtitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/dream_home_subtitle"
-            android:textColor="@color/dream_text_primary"
-            android:textSize="22sp" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/dream_home_connect_btn"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="@drawable/dream_pill_teal"
-            android:text="@string/dream_connect"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

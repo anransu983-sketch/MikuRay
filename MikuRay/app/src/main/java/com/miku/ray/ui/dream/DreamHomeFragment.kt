@@ -1,6 +1,7 @@
 package com.miku.ray.ui.dream
 
 import android.content.Context
+import android.content.Intent
 import android.os.BatteryManager
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.miku.ray.R
 import com.miku.ray.handler.MmkvManager
 import com.miku.ray.ui.main.MainViewModel
+import com.miku.ray.ui.preference.activity.UiSettingsActivity
 import com.miku.ray.util.Utils
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
@@ -76,6 +78,13 @@ class DreamHomeFragment : Fragment() {
             .setOnClickListener { (activity as? DreamMainActivity)?.switchTab(2) }
         view.findViewById<ImageButton>(R.id.dream_home_shortcut_settings)
             .setOnClickListener { (activity as? DreamMainActivity)?.switchTab(3) }
+        view.findViewById<ImageButton>(R.id.dream_home_shortcut_theme)
+            .setOnClickListener {
+                startActivity(Intent(requireContext(), UiSettingsActivity::class.java))
+            }
+
+        view.findViewById<ImageButton>(R.id.dream_home_refresh_btn)
+            .setOnClickListener { mainViewModel.testCurrentServerRealPing() }
 
         btnConnect?.setOnClickListener { mainViewModel.onFabClicked() }
 
