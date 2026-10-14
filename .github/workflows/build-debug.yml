@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - ci/debug-build
+      - ui/dreambox-style
   workflow_dispatch:
 
 jobs:
