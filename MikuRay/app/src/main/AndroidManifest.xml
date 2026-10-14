@@ -2980,6 +2980,10 @@
             android:name=".ui.splash.SplashActivity" />
 
         <activity
+            android:exported="false"
+            android:name=".ui.dream.DreamMainActivity" />
+
+        <activity
             android:exported="true"
             android:launchMode="singleTask"
             android:name=".ui.main.MainActivity">

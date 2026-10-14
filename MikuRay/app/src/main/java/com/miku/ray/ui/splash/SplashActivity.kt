@@ -1,6 +1,6 @@
 package com.miku.ray.ui.splash
 
-import com.miku.ray.ui.main.MainActivity
+import com.miku.ray.ui.dream.DreamMainActivity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -66,7 +66,7 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun navigateToMain() {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, DreamMainActivity::class.java)
 
         val options = ActivityOptionsCompat.makeCustomAnimation(
             this,

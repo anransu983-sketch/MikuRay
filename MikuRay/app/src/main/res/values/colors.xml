@@ -779,4 +779,23 @@
     <color name="blueGrey_surfaceContainerHigh">#E9E8E9</color>
     <color name="blueGrey_surfaceContainerHighest">#E3E2E3</color>
 
+
+    <!-- dreambox-style UI -->
+    <color name="dream_bg">#EAF3F0</color>
+    <color name="dream_card">#FFFFFF</color>
+    <color name="dream_teal">#12836E</color>
+    <color name="dream_teal_dark">#0D6B59</color>
+    <color name="dream_teal_soft">#DFF0EA</color>
+    <color name="dream_pill_blue_bg">#E4F3FE</color>
+    <color name="dream_pill_blue_fg">#4A90D9</color>
+    <color name="dream_orange">#B87900</color>
+    <color name="dream_green">#0E7A34</color>
+    <color name="dream_text_primary">#1C2B28</color>
+    <color name="dream_text_secondary">#6E8380</color>
+    <color name="dream_gray">#9AA9A6</color>
+    <color name="dream_btn_disabled">#B9C6C3</color>
+    <color name="dream_orb_glow">#3312836E</color>
+    <color name="dream_orb_edge">#8E9AA8</color>
+    <color name="dream_orb_mid">#B9C2CF</color>
+    <color name="dream_orb_core">#E8ECF2</color>
 </resources>

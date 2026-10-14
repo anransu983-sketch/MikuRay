@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/dream_nav_home"
+        android:icon="@drawable/rmx_buildings_home_line"
+        android:title="@string/dream_tab_home" />
+    <item
+        android:id="@+id/dream_nav_proxy"
+        android:icon="@drawable/rmx_arrows_arrow_up_down_line"
+        android:title="@string/dream_tab_proxy" />
+    <item
+        android:id="@+id/dream_nav_config"
+        android:icon="@drawable/rmx_system_apps_line"
+        android:title="@string/dream_tab_config" />
+    <item
+        android:id="@+id/dream_nav_settings"
+        android:icon="@drawable/rmx_system_settings_3_line"
+        android:title="@string/dream_tab_settings" />
+</menu>

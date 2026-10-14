@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 发光球：外层光晕 + 内层灰紫渐变球体（近似轮回空间主神光球，无动画） -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="110dp"
+                android:centerX="0.5"
+                android:centerY="0.5"
+                android:startColor="#3D12836E"
+                android:centerColor="#1412836E"
+                android:endColor="#0012836E" />
+        </shape>
+    </item>
+    <item
+        android:left="28dp"
+        android:top="28dp"
+        android:right="28dp"
+        android:bottom="28dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="90dp"
+                android:centerX="0.38"
+                android:centerY="0.30"
+                android:startColor="@color/dream_orb_core"
+                android:centerColor="@color/dream_orb_mid"
+                android:endColor="@color/dream_orb_edge" />
+        </shape>
+    </item>
+</layer-list>
