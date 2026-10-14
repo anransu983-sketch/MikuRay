@@ -1,0 +1,120 @@
+name: Build Debug APK
+
+on:
+  push:
+    branches:
+      - ci/debug-build
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          submodules: 'recursive'
+          fetch-depth: '0'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v4
+        with:
+          log-accepted-android-sdk-licenses: false
+          cmdline-tools-version: '14742923'
+          packages: 'platforms;android-37.0 build-tools;37.0.0 platform-tools'
+
+      - name: Install NDK
+        run: |
+          echo "y" | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+            --channel=0 \
+            --install "ndk;29.0.14206865"
+          echo "NDK_HOME=$ANDROID_HOME/ndk/29.0.14206865" >> $GITHUB_ENV
+
+      - name: Restore cached libhevtun
+        id: cache-libhevtun-restore
+        uses: actions/cache/restore@v6
+        with:
+          path: ${{ github.workspace }}/libs
+          key: libhevtun-${{ runner.os }}-${{ hashFiles('.git/modules/hev-socks5-tunnel/HEAD') }}-${{ hashFiles('compile-hevtun.sh') }}
+
+      - name: Build libhevtun
+        if: steps.cache-libhevtun-restore.outputs.cache-hit != 'true'
+        run: bash compile-hevtun.sh
+
+      - name: Save libhevtun
+        if: steps.cache-libhevtun-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: ${{ github.workspace }}/libs
+          key: libhevtun-${{ runner.os }}-${{ hashFiles('.git/modules/hev-socks5-tunnel/HEAD') }}-${{ hashFiles('compile-hevtun.sh') }}
+
+      - name: Copy libhevtun
+        run: cp -r ${{ github.workspace }}/libs ${{ github.workspace }}/MikuRay/app
+
+      - name: Download libv2ray.aar
+        run: |
+          pushd AndroidLibXrayLite
+          TAG=$(git describe --tags --abbrev=0)
+          echo "AndroidLibXrayLite tag: $TAG"
+          popd
+          mkdir -p MikuRay/app/libs
+          curl -sSL "https://github.com/2dust/AndroidLibXrayLite/releases/download/${TAG}/libv2ray.aar" \
+            -o MikuRay/app/libs/libv2ray.aar
+          ls -la MikuRay/app/libs/
+
+      - name: Setup Java
+        uses: actions/setup-java@v6.0.0
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      # 固定 debug 签名：缓存 debug.keystore，保证多次构建签名一致，可覆盖安装
+      - name: Restore debug keystore
+        id: cache-keystore-restore
+        uses: actions/cache/restore@v6
+        with:
+          path: ~/.android/debug.keystore
+          key: debug-keystore-v1
+
+      - name: Generate debug keystore (first run)
+        if: steps.cache-keystore-restore.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/.android
+          keytool -genkeypair -keystore ~/.android/debug.keystore -alias androiddebugkey \
+            -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10950 \
+            -dname "CN=Android Debug,O=Android,C=US"
+
+      - name: Save debug keystore
+        if: steps.cache-keystore-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: ~/.android/debug.keystore
+          key: debug-keystore-v1
+
+      - name: Build debug APK
+        run: |
+          cd ${{ github.workspace }}/MikuRay
+          echo "sdk.dir=${ANDROID_HOME}" > local.properties
+          chmod 755 gradlew
+          ./gradlew assembleDebug --console=plain
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v7
+        if: ${{ success() }}
+        with:
+          name: mikuray-debug-apk
+          path: ${{ github.workspace }}/MikuRay/app/build/outputs/apk/debug/*.apk
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: ${{ success() }}
+        with:
+          tag_name: debug-build-${{ github.run_number }}
+          name: MikuRay debug build #${{ github.run_number }}
+          files: ${{ github.workspace }}/MikuRay/app/build/outputs/apk/debug/*.apk
+          prerelease: true
+          generate_release_notes: false
