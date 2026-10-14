@@ -14,7 +14,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.miku.ray.AppConfig
 import com.miku.ray.R
 import com.miku.ray.core.LauncherManager
-import com.miku.ray.dto.EConfigType
+import com.miku.ray.enums.EConfigType
 import com.miku.ray.enums.PermissionType
 import com.miku.ray.extension.snackbarError
 import com.miku.ray.extension.snackbarSuccess
